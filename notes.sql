@@ -24,6 +24,7 @@ Models - templates for how your data will be represented
 Fixtures - dummy data
     loaddata - self explanitory: they load your dummy data into the empty
     tables we made in migrations
+        .fixture <-- needs to match the model classname (singular or plural [in my case, singular]) 
 
 Views
     these modules hanbdle the retrieve/list/create/update/destroy
