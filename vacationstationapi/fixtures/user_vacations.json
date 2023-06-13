@@ -1,0 +1,10 @@
+[
+    {
+        "model": "vacationstationapi.uservacation",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "vacation": 1
+        }
+    }
+]

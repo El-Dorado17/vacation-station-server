@@ -1,0 +1,23 @@
+[
+    {
+        "model": "vacationstationapi.vacationtype",
+        "pk": 1,
+        "fields": {
+            "name": "Beach"
+        }
+    },
+    {
+        "model": "vacationstationapi.vacationtype",
+        "pk": 2,
+        "fields": {
+            "name": "Big City"
+        }
+    },
+    {
+        "model": "vacationstationapi.vacationtype",
+        "pk": 3,
+        "fields": {
+            "name": "Desert"
+        }
+    }
+]

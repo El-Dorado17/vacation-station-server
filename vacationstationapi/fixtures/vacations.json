@@ -1,0 +1,30 @@
+[
+    {
+        "model": "vacationstationapi.vacation",
+        "pk": 1,
+        "fields": {
+            "country": 1, 
+            "city": "Miami", 
+            "vacation_type": 1, 
+            "user": 1, 
+            "description": "OMG it was awesome. We saw goldfish and everything", 
+            "number_of_people": 2, 
+            "price": 800, 
+            "rating": 5
+        }
+    },
+    {
+        "model": "vacationstationapi.vacation",
+        "pk": 2,
+        "fields": {
+            "country": 2, 
+            "city": "Tokyo", 
+            "vacation_type": 2, 
+            "user": 2, 
+            "description": "They didn't have Maruchan-Brand Ramen Noodles?", 
+            "number_of_people": 2, 
+            "price": 9000, 
+            "rating": 4
+        }
+    }
+]

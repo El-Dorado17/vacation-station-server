@@ -1,0 +1,23 @@
+[
+    {
+        "model": "vacationstationapi.country",
+        "pk": 1,
+        "fields": {
+            "name": "United States"
+        }
+    },
+    {
+        "model": "vacationstationapi.country",
+        "pk": 2,
+        "fields": {
+            "name": "Japan"
+        }
+    },
+    {
+        "model": "vacationstationapi.country",
+        "pk": 3,
+        "fields": {
+            "name": "Jamaica"
+        }
+    }
+]

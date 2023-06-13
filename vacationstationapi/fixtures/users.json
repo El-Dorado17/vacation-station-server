@@ -1,0 +1,38 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "wasspord",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "ElyTravels",
+            "first_name": "Ely",
+            "last_name": "D",
+            "email": "me@me.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2020-08-28T14:51:39.989Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "password": "wasspord",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "MikaylaTravels",
+            "first_name": "Mikayla",
+            "last_name": "D",
+            "email": "me@me.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2020-08-28T14:51:39.989Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]
