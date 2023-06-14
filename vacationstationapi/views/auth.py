@@ -47,7 +47,7 @@ def register_user(request):
 
     # Create a new user by invoking the `create_user` helper method
     # on Django's built-in User model
-    new_user = VacationUser.objects.create_user(
+    new_user = User.objects.create_user(
         username=request.data['username'],
         password=request.data['password'],
         first_name=request.data['first_name'],
@@ -56,7 +56,6 @@ def register_user(request):
 
     # Now save the extra info in the levelupapi_gamer table
     user = VacationUser.objects.create(
-        bio=request.data['bio'],
         user=new_user
     )
 
