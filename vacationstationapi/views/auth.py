@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
-from vacationstationapi.models import User 
+from vacationstationapi.models import VacationUser 
 
 
 @api_view(['POST'])
@@ -47,7 +47,7 @@ def register_user(request):
 
     # Create a new user by invoking the `create_user` helper method
     # on Django's built-in User model
-    new_user = User.objects.create_user(
+    new_user = VacationUser.objects.create_user(
         username=request.data['username'],
         password=request.data['password'],
         first_name=request.data['first_name'],
@@ -55,7 +55,7 @@ def register_user(request):
     )
 
     # Now save the extra info in the levelupapi_gamer table
-    user = User.objects.create(
+    user = VacationUser.objects.create(
         bio=request.data['bio'],
         user=new_user
     )

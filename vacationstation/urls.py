@@ -10,7 +10,7 @@ from vacationstationapi.views import VacationTypeView, VacationView
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'countries', CountryView, 'country')
 router.register(r'uservacations', UserVacationView, 'uservacation')
-router.register(r'users', VacationUserView, 'user') #!OperationalError: no such table: vacationstationapi_user
+router.register(r'users', VacationUserView, 'user') 
 router.register(r'vacationtypes', VacationTypeView, 'vacationtype')
 router.register(r'vacations', VacationView, 'vacation')
 
