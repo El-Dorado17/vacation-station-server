@@ -1,0 +1,16 @@
+[
+    {
+        "model": "vacationstationapi.vacationuser",
+        "pk": 1,
+        "fields": {
+            "user": 1
+        }
+    },
+    {
+        "model": "vacationstationapi.vacationuser",
+        "pk": 2,
+        "fields": {
+            "user": 2
+        }
+    }
+]

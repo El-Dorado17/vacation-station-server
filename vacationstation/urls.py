@@ -3,13 +3,16 @@ from django.conf.urls import include
 from django.urls import path
 from vacationstationapi.views import register_user, login_user
 from rest_framework import routers
-from vacationstationapi.views import CountryView
-
+from vacationstationapi.views import CountryView, UserVacationView
+from vacationstationapi.views import VacationUserView
+from vacationstationapi.views import VacationTypeView, VacationView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'countries', CountryView, 'country')
-
-
+router.register(r'uservacations', UserVacationView, 'uservacation')
+router.register(r'users', VacationUserView, 'user') 
+router.register(r'vacationtypes', VacationTypeView, 'vacationtype')
+router.register(r'vacations', VacationView, 'vacation')
 
 
 urlpatterns = [
