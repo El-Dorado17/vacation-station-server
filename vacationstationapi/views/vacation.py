@@ -4,6 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from vacationstationapi.models import Vacation
+from vacationstationapi.models import VacationUser
 
 class VacationView(ViewSet):
     """Vacation Station Vacation View"""
@@ -14,10 +15,11 @@ class VacationView(ViewSet):
             response -- JSON serialized vacation 
         """
         vacation = Vacation.objects.get(pk=pk)
+        #vacation_user = VacationUser.objects.get(user= request.auth.user)
         serializer = VacationSerializer(vacation)
         return Response(serializer.data)
     
-    def list (self,requeest):
+    def list (self,request):
         """
             GET requests for ALL vacation 
         """

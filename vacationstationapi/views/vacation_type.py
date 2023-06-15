@@ -17,7 +17,7 @@ class VacationTypeView(ViewSet):
         serializer = VacationTypeSerializer(vacation_type)
         return Response(serializer.data)
     
-    def list (self,requeest):
+    def list (self,request):
         """
             GET requests for ALL vacation types
         """
