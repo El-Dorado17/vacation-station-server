@@ -17,7 +17,7 @@ class CountryView(ViewSet):
         serializer = CountrySerializer(country)
         return Response(serializer.data)
     
-    def list (self,requeest):
+    def list (self,request):
         """
             GET requests for ALL countries
         """

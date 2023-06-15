@@ -20,7 +20,7 @@ class VacationUserView(ViewSet):
         serializer = UserSerializer(vacation_user)
         return Response(serializer.data)
     
-    def list (self,requeest):
+    def list (self,request):
         """
             GET requests for ALL users
         """
