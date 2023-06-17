@@ -20,7 +20,7 @@ class VacationView(ViewSet):
         #vacation_user = VacationUser.objects.get(user= request.auth.user)
         serializer = VacationSerializer(vacation)
         return Response(serializer.data)
-    
+
     def list (self,request):
         """
             GET requests for ALL vacation 
@@ -31,7 +31,6 @@ class VacationView(ViewSet):
 
     def create(self, request):
         """Handle POST operations
-
         Returns
             Response -- JSON serialized game instance
         """
@@ -51,7 +50,29 @@ class VacationView(ViewSet):
         )
         serializer = VacationSerializer(vacation) #Front end needs this in JSON: Whole point of serializing
         return Response(serializer.data, status= status.HTTP_201_CREATED)
-    
+
+    def update(self, request, pk):
+        """Handle PUT requests for a vacation
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+
+        vacation = Vacation.objects.get(pk=pk)
+        country = Country.objects.get(pk=request.data["country"])
+        vacation.country = country
+        vacation.city = request.data["city"]
+        vacation_type = VacationType.objects.get(pk=request.data["vacation_type"])
+        vacation.vacation_type = vacation_type
+        # vacation_user = VacationUser.objects.get(pk=request.data["vacation_user"])
+        # vacation.vacation_user = vacation_user
+        vacation.description = request.data["description"]
+        vacation.number_of_people = request.data["number_of_people"]
+        vacation.price = request.data["price"]
+        vacation.rating = request.data["rating"]
+        
+        vacation.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk):
         vacation = Vacation.objects.get(pk=pk)
