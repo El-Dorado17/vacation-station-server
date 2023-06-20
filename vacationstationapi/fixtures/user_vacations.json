@@ -6,5 +6,29 @@
             "user": 1,
             "vacation": 1
         }
+    },
+    {
+        "model": "vacationstationapi.uservacation",
+        "pk": 1,
+        "fields": {
+            "user": 3,
+            "vacation": 5
+        }
+    },
+    {
+        "model": "vacationstationapi.uservacation",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "vacation": 8
+        }
+    },
+    {
+        "model": "vacationstationapi.uservacation",
+        "pk": 1,
+        "fields": {
+            "user": 4,
+            "vacation": 26
+        }
     }
 ]

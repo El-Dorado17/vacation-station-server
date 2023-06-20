@@ -3,7 +3,8 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from vacationstationapi.models import UserVacation
+from vacationstationapi.models import UserVacation, Vacation, VacationUser
+from django.contrib.auth.models import User
 
 class UserVacationView(ViewSet):
     """Vacation Station UserVacation View"""
@@ -21,14 +22,38 @@ class UserVacationView(ViewSet):
         """
             GET requests for ALL user vacations
         """
-        user_vacation = UserVacation.objects.all()
-        serializer = UserVacationSerializer(user_vacation, many=True)
+        vacation_user= VacationUser.objects.get(user = request.auth.user)
+        user_vacations = UserVacation.objects.filter(vacation_user = vacation_user)
+        serializer = UserVacationSerializer(user_vacations, many=True)
         return Response(serializer.data)
+
+    # def destroy(self, request, pk):
+    #     vacation = Vacation.objects.get(pk=pk)
+    #     vacation.delete()
+    #     return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name')
+
+class VacationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vacation
+        fields = ('country', 'city', 'vacation_type', 'vacation_user',
+                'description', 'number_of_people', 'price', 'rating')
+        depth = 1
+
+    
 
 class UserVacationSerializer(serializers.ModelSerializer):
     """
         JSON serializer for Countries
     """
+    #user =UserSerializer()
+    vacation = VacationSerializer()
+    # vacation = 
     class Meta:
         model  = UserVacation
-        fields = ('id', 'user', 'vacation')
+        fields = ('id', 'vacation_user', 'vacation')

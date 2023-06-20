@@ -4,7 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from vacationstationapi.models import Vacation, VacationType
-from vacationstationapi.models import Country, VacationUser
+from vacationstationapi.models import Country, VacationUser, UserVacation
 from django.contrib.auth.models import User
 
 
@@ -34,8 +34,9 @@ class VacationView(ViewSet):
         Returns
             Response -- JSON serialized game instance
         """
+        #user = User.objects.get(user = request.auth.user)
         vacation_user = VacationUser.objects.get(user=request.auth.user)
-        vacation_type = VacationType.objects.get(pk=request.data["vacation_type"])
+        vacation_type = VacationType.objects.get(pk=request.data["vacation_type"]) 
         country = Country.objects.get(pk=request.data["country"])
 # This is an outside model that gets used on line 47
         vacation = Vacation.objects.create(
@@ -48,7 +49,9 @@ class VacationView(ViewSet):
             price=request.data["price"],
             rating=request.data["rating"]
         )
-        serializer = VacationSerializer(vacation) #Front end needs this in JSON: Whole point of serializing
+        # vacation_id = vacation.id
+        user_vacation = UserVacation.objects.create(vacation_user = vacation_user, vacation = vacation)
+        serializer = VacationSerializer(vacation) 
         return Response(serializer.data, status= status.HTTP_201_CREATED)
 
     def update(self, request, pk):
@@ -56,7 +59,6 @@ class VacationView(ViewSet):
         Returns:
             Response -- Empty body with 204 status code
         """
-
         vacation = Vacation.objects.get(pk=pk)
         country = Country.objects.get(pk=request.data["country"])
         vacation.country = country
