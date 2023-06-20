@@ -27,6 +27,11 @@ class UserVacationView(ViewSet):
         serializer = UserVacationSerializer(user_vacations, many=True)
         return Response(serializer.data)
 
+    # def destroy(self, request, pk):
+    #     vacation = Vacation.objects.get(pk=pk)
+    #     vacation.delete()
+    #     return Response(None, status=status.HTTP_204_NO_CONTENT)
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -39,6 +44,8 @@ class VacationSerializer(serializers.ModelSerializer):
         fields = ('country', 'city', 'vacation_type', 'vacation_user',
                 'description', 'number_of_people', 'price', 'rating')
         depth = 1
+
+    
 
 class UserVacationSerializer(serializers.ModelSerializer):
     """
