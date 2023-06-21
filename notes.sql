@@ -36,3 +36,5 @@ Views
 
 */
 
+-- DELETE FROM vacationstationapi_vacation
+-- WHERE id = 42

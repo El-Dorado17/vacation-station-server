@@ -6,6 +6,7 @@ from rest_framework import serializers, status
 from vacationstationapi.models import Vacation, VacationType
 from vacationstationapi.models import Country, VacationUser, UserVacation
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 
 
 class VacationView(ViewSet):
@@ -78,10 +79,14 @@ class VacationView(ViewSet):
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
-    def destroy(self, request, pk):
-        vacation = Vacation.objects.get(pk=pk)
-        vacation.delete()
-        return Response(None, status=status.HTTP_204_NO_CONTENT)
+    def destroy(self, request, pk=None):
+        try:
+            vacation = Vacation.objects.get(id=pk)
+            vacation.delete()
+            return Response( status=status.HTTP_204_NO_CONTENT)
+        except Vacation.DoesNotExist:
+            return Response("Vacation not found", status=status.HTTP_404_NOT_FOUND)
+
 
 class VacationSerializer(serializers.ModelSerializer):
     """
