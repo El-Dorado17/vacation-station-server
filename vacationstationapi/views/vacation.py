@@ -26,8 +26,10 @@ class VacationView(ViewSet):
             GET requests for ALL vacation 
         """
         vacation = Vacation.objects.all()
+
         serializer = VacationSerializer(vacation, many=True)
         return Response(serializer.data)
+
 
     def create(self, request):
         """Handle POST operations
