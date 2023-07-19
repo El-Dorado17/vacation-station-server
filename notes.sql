@@ -31,7 +31,18 @@ Views
     functionality of whatever view/resource we want to manipulate
 
 
+# loop 1 through 100
+# if number is divisible by 3, output "fizz"
+# if number is divisible by 5, output "buzz"
+# if number is divisible by BOTH, output "FIZZBUZZ"
+# if not divisible by either, output the number
 
+for number in range (1, 101):
+  #print(number)
+  if number % 3 == 0 and number % 5 == 0: print("FIZZBUZZ")
+  elif number % 3 == 0: print("fizz")
+  elif number % 5 == 0: print("buzz")
+  else: print(number)
 
 
 */
